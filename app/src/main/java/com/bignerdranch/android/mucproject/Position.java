@@ -9,6 +9,13 @@ public class Position {
     private double longtitude;
     private long time;
 
+    public Position() {
+    }
+
+    public Position(double latitude, double longtitude) {
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+    }
 
     public Position(double latitude, double longtitude, long time) {
         this.latitude = latitude;

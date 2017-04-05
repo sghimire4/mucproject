@@ -38,6 +38,10 @@ public class MUCActivity extends AppCompatActivity {
     //private static final String FB_URL = "https://mucproject-78417.firebaseio.com";
     private static final String POSITION_TAG = "Position";
     private Position mPos;
+    private Position [] pointsOfInterest = new Position[] {
+            new Position(51.521679511262334, -0.12997129696318044),
+            new Position(51.521673714259734, -0.12996489367222352)
+    };
 
     //private Firebase mFbInstance;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -233,4 +237,9 @@ public class MUCActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muc);
     }*/
+
+    public void isPositionWithinRange(){
+
+    }
+
 }
