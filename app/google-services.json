@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "408757578012",
+    "firebase_url": "https://mucproject-78417.firebaseio.com",
+    "project_id": "mucproject-78417",
+    "storage_bucket": "mucproject-78417.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408757578012:android:7ec7c7307d862574",
+        "android_client_info": {
+          "package_name": "com.bignerdranch.android.mucproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408757578012-5a2573nkr2fn1gfcf4a9duksv2d9t829.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bignerdranch.android.mucproject",
+            "certificate_hash": "642145489e6b290bdf9365fb40e0ae4e19c7d5ac"
+          }
+        },
+        {
+          "client_id": "408757578012-fm8rhdu0cgcr0q8dsn899fg8lstqrcpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA712CjzSJf_awcr8ctQiJrEG29y1vLSmM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408757578012-fm8rhdu0cgcr0q8dsn899fg8lstqrcpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
