@@ -47,6 +47,9 @@ public class MUCActivity extends AppCompatActivity {
     private Position mPos;
     private Position [] pointsOfInterest = new Position[] {
             new Position(51.521679511262334, -0.12997129696318044),
+            new Position(51.521673714259734, -0.12996489367222352),
+            new Position(51.521673714259734, -0.12996489367222352),
+            new Position(51.521673714259734, -0.12996489367222352),
             new Position(51.521673714259734, -0.12996489367222352)
     };
 
@@ -62,8 +65,8 @@ public class MUCActivity extends AppCompatActivity {
             mPos = new Position(location.getLatitude(), location.getLongitude(), location.getTime());
             Log.d(TAG, "Latitude: " + location.getLatitude());
             Log.d(TAG, "Longitude: " + location.getLongitude());
-            Log.d(TAG, "Time: "  + location.getTime());
-            Log.d(POSITION_TAG, "Position Latitude: "  + mPos.getLatitude());
+            Log.d(TAG, "Time: " + location.getTime());
+            Log.d(POSITION_TAG, "Position Latitude: " + mPos.getLatitude());
             if (mImageView != null && mImageView.isReady()) {
                 IALatLng latLng = new IALatLng(location.getLatitude(), location.getLongitude());
                 PointF point = mFloorPlan.coordinateToPoint(latLng);
@@ -72,54 +75,72 @@ public class MUCActivity extends AppCompatActivity {
             }
 
             //check if device is close to a point of interest
-            //for(int i=0; i<5; i++){
-                Log.d(TAG, "Position comparison: "  + mPos.isPositionWithinRange(pointsOfInterest[0]));
-            //}
+            for (int i = 0; i < 5; i++) {
+                if (i == 0) {
+                    //Entrance to 404/405
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                } else if (i == 1) {
+                    //Entrance to 403
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                } else if (i == 2) {
+                    //Main Entrance to Labs
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                } else if (i == 3) {
+                    //Stairs
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                } else if (i == 4) {
+                    //Lifts A/B
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                } else {
+                    //No location matched
+                    Log.d(TAG, "Position comparison: " + mPos.isPositionWithinRange(pointsOfInterest[i]));
+                }
 
-            //mFb.getInstance();
-            //Firebase mPosFb = mFbInstance.child("Position");
-            //mPosFb.setValue(mPos);
-            myRef.push().setValue(mPos);
-        }
-
-        @Override
-        public void onStatusChanged(String s, int i, Bundle bundle) {
-
-        }
-    };
-
-    private IAResourceManager mFloorPlanManager;
-    private ImageView mFloorPlanImage;
-    // blue dot radius in meters
-    private static final float dotRadius = 1.0f;
-    private BlueDotView mImageView;
-    private long mDownloadId;
-    private DownloadManager mDownloadManager;
-
-    private IARegion.Listener mRegionListener = new IARegion.Listener() {
-        @Override
-        public void onEnterRegion(IARegion region) {
-            if (region.getType() == IARegion.TYPE_FLOOR_PLAN) {
-                String id = region.getId();
-                Log.d(TAG, "floorPlan changed to " + id);
-                Toast.makeText(MUCActivity.this, id, Toast.LENGTH_SHORT).show();
-                fetchFloorPlan(id);
+                //mFb.getInstance();
+                //Firebase mPosFb = mFbInstance.child("Position");
+                //mPosFb.setValue(mPos);
+                myRef.push().setValue(mPos);
             }
         }
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+        };
+
+        private IAResourceManager mFloorPlanManager;
+        private ImageView mFloorPlanImage;
+        // blue dot radius in meters
+        private static final float dotRadius = 1.0f;
+        private BlueDotView mImageView;
+        private long mDownloadId;
+        private DownloadManager mDownloadManager;
+
+        private IARegion.Listener mRegionListener = new IARegion.Listener() {
+            @Override
+            public void onEnterRegion(IARegion region) {
+                if (region.getType() == IARegion.TYPE_FLOOR_PLAN) {
+                    String id = region.getId();
+                    Log.d(TAG, "floorPlan changed to " + id);
+                    Toast.makeText(MUCActivity.this, id, Toast.LENGTH_SHORT).show();
+                    fetchFloorPlan(id);
+                }
+            }
+
+            @Override
+            public void onExitRegion(IARegion region) {
+                // leaving a previously entered region
+            }
+        };
+
+        private IATask<IAFloorPlan> mPendingAsyncResult;
+        private IAFloorPlan mFloorPlan;
 
         @Override
-        public void onExitRegion(IARegion region) {
-            // leaving a previously entered region
-        }
-    };
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_muc);
 
-    private IATask<IAFloorPlan> mPendingAsyncResult;
-    private IAFloorPlan mFloorPlan;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_muc);
         Log.d(TAG, "onCreate() called");
         //Intialize Firebase
         //Firebase.setAndroidContext(this);

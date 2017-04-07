@@ -18,14 +18,14 @@ public class Position {
     public Position() {
     }
 
-    public Position(double latitude, double longtitude) {
+    public Position(double latitude, double longitude) {
         this.latitude = latitude;
-        this.longitude = longtitude;
+        this.longitude = longitude;
     }
 
-    public Position(double latitude, double longtitude, long time) {
+    public Position(double latitude, double longitude, long time) {
         this.latitude = latitude;
-        this.longitude = longtitude;
+        this.longitude = longitude;
         this.time = time;
     }
 
@@ -37,12 +37,12 @@ public class Position {
         this.latitude = latitude;
     }
 
-    public double getLongtitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongtitude(double longtitude) {
-        this.longitude = longtitude;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public long getTime() {
@@ -64,10 +64,10 @@ public class Position {
         // f2 and l2 are the latitude and longitude of current position
 
         f1 = toRadians(pos.getLatitude());
-        l1 = toRadians(pos.getLongtitude());
+        l1 = toRadians(pos.getLongitude());
 
         f2 = toRadians(getLatitude());
-        l2 = toRadians(getLongtitude());
+        l2 = toRadians(getLongitude());
 
         squaredDf = (f1 - f2)*(f1 - f2);
         squaredDl = (l1 - l2)*(l1 - l2);
