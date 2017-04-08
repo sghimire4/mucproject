@@ -1,0 +1,24 @@
+#
+# Build configuration for Circle CI
+#
+
+general:
+    artifacts:
+        - /home/ubuntu/mucproject/app/build/outputs/apk/
+
+machine:
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+    override:
+        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-25.0.2,android-25,extra-google-m2repository,extra-google-google_play_services,extra-android-support,
+        extra-google-firebase-client-android-2.5.2,extra-google-indooratlast-android-sdk-2.3.2,extra-google-firebase-core-10.0.1, extra-google-firebase-database-10.0.1,extra-google-firebase-core-10.0.1,
+        extra-espresso-core-2.2.2
+
+       - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
+
+test:
+    override:
+        - (./gradlew assemble):
+            timeout: 360
